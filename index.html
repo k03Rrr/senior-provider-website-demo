@@ -81,22 +81,6 @@
       transition: transform 260ms ease, opacity 260ms ease;
     }
 
-    .nav::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        repeating-linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0) 0,
-          rgba(255, 255, 255, 0) 91px,
-          rgba(226, 215, 204, 0.16) 91px,
-          rgba(226, 215, 204, 0.16) 108px
-        );
-      opacity: 0.6;
-    }
-
     .brand {
       position: relative;
       z-index: 1;
@@ -175,31 +159,6 @@
 
     .menu-toggle {
       display: none;
-    }
-
-    .side-pagination {
-      position: fixed;
-      left: 24px;
-      top: 50%;
-      z-index: 9;
-      display: grid;
-      gap: 48px;
-      transform: translateY(-50%);
-    }
-
-    .side-pagination a {
-      width: 16px;
-      height: 2px;
-      display: block;
-      background: rgba(22, 25, 23, 0.16);
-      transition: background 180ms ease, transform 180ms ease;
-    }
-
-    .side-pagination a:hover,
-    .side-pagination a.is-active {
-      background: var(--ink);
-      transform: scaleX(1.25);
-      transform-origin: left center;
     }
 
     @supports (animation-timeline: scroll()) {
@@ -1120,10 +1079,6 @@
         border-bottom: 0;
       }
 
-      .side-pagination {
-        display: none;
-      }
-
       .hero,
       .section-grid,
       .contact-panel,
@@ -1314,16 +1269,6 @@
   </style>
 </head>
 <body>
-  <nav class="side-pagination" aria-label="Section pagination">
-    <a class="is-active" href="#top" data-section="top" aria-label="Go to Home"></a>
-    <a href="#home-about" data-section="home-about" aria-label="Go to About"></a>
-    <a href="#home-work" data-section="home-work" aria-label="Go to How I Work"></a>
-    <a href="#home-interpreting" data-section="home-interpreting" aria-label="Go to Interpreting"></a>
-    <a href="#home-translation" data-section="home-translation" aria-label="Go to Translation and Revision"></a>
-    <a href="#home-credentials" data-section="home-credentials" aria-label="Go to Credentials"></a>
-    <a href="#home-contact" data-section="home-contact" aria-label="Go to Contact"></a>
-  </nav>
-
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Dmytro Yakubovskyy home">
@@ -1726,35 +1671,6 @@
     </div>
   </footer>
   <script>
-    const paginationLinks = Array.from(document.querySelectorAll(".side-pagination a"));
-    const sections = paginationLinks
-      .map((link) => document.getElementById(link.dataset.section))
-      .filter(Boolean);
-
-    const setActiveSection = (id) => {
-      paginationLinks.forEach((link) => {
-        link.classList.toggle("is-active", link.dataset.section === id);
-      });
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible) {
-          setActiveSection(visible.target.id);
-        }
-      },
-      {
-        rootMargin: "-35% 0px -45% 0px",
-        threshold: [0.1, 0.25, 0.5, 0.75],
-      }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
     document.querySelectorAll("[data-disclosure]").forEach((disclosure) => {
       const button = disclosure.querySelector(".cta-disclosure-toggle");
 

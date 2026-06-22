@@ -63,15 +63,6 @@ a {
   pointer-events: auto;
 }
 
-.nav::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(90deg, rgba(255,255,255,0) 0, rgba(255,255,255,0) 91px, rgba(226,215,204,0.16) 91px, rgba(226,215,204,0.16) 108px);
-  opacity: 0.6;
-}
-
 .brand,
 .nav-links {
   position: relative;
