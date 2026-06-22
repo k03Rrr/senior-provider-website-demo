@@ -1,12 +1,12 @@
 :root {
-  --paper: #fbfbf8;
-  --surface: #ffffff;
+  --paper: #fcfaf5;
+  --surface: #fffefa;
   --ink: #161917;
-  --muted: #666a66;
-  --quiet: #969994;
-  --line: #e6e5df;
-  --accent: #4d5d56;
-  --gold: #b79a55;
+  --muted: #69665f;
+  --quiet: #989289;
+  --line: #e8e2d7;
+  --accent: #58645a;
+  --gold: #b69650;
   --measure: 72rem;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --sans: Inter, "Segoe UI", Roboto, Arial, sans-serif;
@@ -597,21 +597,20 @@ footer {
   gap: 18px;
 }
 
-.footer-inner > span:first-child {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+.footer-identity {
+  display: grid;
+  gap: 4px;
   color: var(--ink);
-  font-weight: 400;
-  letter-spacing: 0.01em;
 }
 
-.footer-inner > span:first-child::before {
-  content: "";
-  width: 16px;
-  height: 3px;
-  flex: 0 0 auto;
-  background: var(--gold);
+.footer-identity strong {
+  font-size: 0.86rem;
+  font-weight: 500;
+}
+
+.footer-identity span {
+  color: var(--muted);
+  font-size: 0.72rem;
 }
 
 @media (max-width: 900px) {
@@ -745,14 +744,12 @@ footer {
     gap: 4px;
   }
 
-  .footer-inner > span:first-child {
-    gap: 7px;
-    font-size: 0.64rem;
+  .footer-identity strong {
+    font-size: 0.62rem;
   }
 
-  .footer-inner > span:first-child::before {
-    width: 11px;
-    height: 2px;
+  .footer-identity span {
+    font-size: 0.54rem;
   }
 
   .button {

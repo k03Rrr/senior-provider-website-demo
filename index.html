@@ -3,20 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="nav.js" defer></script>
   <title>Dmytro Yakubovskyy | Website Concept</title>
   <style>
     :root {
-      --paper: #fbfbf8;
-      --surface: #ffffff;
+      --paper: #fcfaf5;
+      --surface: #fffefa;
       --ink: #161917;
-      --muted: #666a66;
-      --quiet: #969994;
-      --line: #e6e5df;
-      --accent: #4d5d56;
+      --muted: #69665f;
+      --quiet: #989289;
+      --line: #e8e2d7;
+      --accent: #58645a;
       --accent-dark: #27342f;
-      --gold: #b79a55;
-      --soft: #f3f3ee;
+      --gold: #b69650;
+      --soft: #f5f0e7;
       --glass: rgba(251, 251, 248, 0.72);
       --glass-strong: rgba(255, 255, 255, 0.78);
       --glass-line: rgba(230, 229, 223, 0.78);
@@ -186,13 +185,13 @@
       width: 100%;
       min-height: min(860px, 100svh);
       margin: 0 auto;
-      padding: 190px max(36px, calc((100vw - 1280px) / 2 + 36px)) 86px;
+      padding: 110px max(36px, calc((100vw - 1280px) / 2 + 36px)) 86px;
       display: flex;
       align-items: flex-end;
       overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(8, 13, 14, 0.82) 0%, rgba(8, 13, 14, 0.48) 38%, rgba(8, 13, 14, 0.12) 72%),
-        linear-gradient(0deg, rgba(8, 13, 14, 0.78) 0%, rgba(8, 13, 14, 0.18) 58%, rgba(8, 13, 14, 0.06) 100%),
+        linear-gradient(90deg, rgba(31, 27, 21, 0.68) 0%, rgba(42, 37, 29, 0.34) 42%, rgba(91, 72, 47, 0.06) 76%),
+        linear-gradient(0deg, rgba(34, 29, 23, 0.66) 0%, rgba(103, 76, 43, 0.08) 62%, rgba(229, 190, 126, 0.08) 100%),
         url("assets/home-hero-institutional.png") center 48% / cover no-repeat;
     }
 
@@ -201,7 +200,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(8, 13, 14, 0.26), transparent 32%),
+        linear-gradient(180deg, rgba(87, 65, 39, 0.12), transparent 34%),
         linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 96px);
       opacity: 0.42;
       pointer-events: none;
@@ -225,7 +224,7 @@
 
     .hero h1 {
       color: #ffffff;
-      font-size: clamp(3.8rem, 7.4vw, 7rem);
+      font-size: clamp(3.35rem, 6.2vw, 5.8rem);
       line-height: 0.94;
     }
 
@@ -237,6 +236,14 @@
       font-size: clamp(1.08rem, 2vw, 1.45rem);
       font-weight: 450;
       line-height: 1.45;
+    }
+
+    .hero-subject {
+      max-width: 760px;
+      margin: 10px 0 0;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: clamp(0.88rem, 1.3vw, 1.05rem);
+      letter-spacing: 0.02em;
     }
 
     .hero-summary {
@@ -284,7 +291,7 @@
     }
 
     .lead {
-      max-width: 720px;
+      max-width: 940px;
       margin: 32px 0 0;
       color: var(--muted);
       font-size: clamp(1.08rem, 2.2vw, 1.32rem);
@@ -303,9 +310,8 @@
 
     .hero-meta {
       margin-top: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 22px;
+      display: grid;
+      gap: 7px;
       color: var(--muted);
       font-size: 0.95rem;
     }
@@ -314,15 +320,26 @@
       position: relative;
     }
 
-    .hero-meta span + span::before {
-      content: "";
-      position: absolute;
-      left: -12px;
-      top: 50%;
-      width: 3px;
-      height: 3px;
-      border-radius: 50%;
-      background: var(--quiet);
+    .hero-meta .location-line {
+      margin-top: 7px;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.18rem;
+    }
+
+    .hero-meta .brussels {
+      position: relative;
+      color: #826c3c;
+    }
+
+    .hero-meta .brussels::after {
+      content: "EU";
+      margin-left: 6px;
+      color: var(--gold);
+      font-family: var(--sans);
+      font-size: 0.56rem;
+      letter-spacing: 0.12em;
+      vertical-align: super;
     }
 
     .hero-facts {
@@ -360,26 +377,26 @@
     }
 
     .hero-quote {
-      max-width: 980px;
-      margin: 34px 0 0;
-      padding: 28px 30px;
-      border: 1px solid rgba(22, 25, 23, 0.18);
-      background: rgba(251, 251, 248, 0.72);
+      max-width: 1040px;
+      margin: 58px 0 0;
+      padding: 4px 0 8px 38px;
+      border-left: 3px solid var(--gold);
     }
 
     .hero-quote blockquote {
       margin: 0;
       color: var(--ink);
       font-family: var(--serif);
-      font-size: clamp(1.25rem, 2.4vw, 1.85rem);
-      line-height: 1.35;
+      font-size: clamp(1.55rem, 3vw, 2.4rem);
+      line-height: 1.3;
     }
 
     .hero-quote cite {
       display: block;
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 0.84rem;
+      margin-top: 20px;
+      color: var(--ink);
+      font-size: 0.96rem;
+      font-weight: 600;
       font-style: normal;
     }
 
@@ -979,21 +996,20 @@
       gap: 18px;
     }
 
-    .footer-inner > span:first-child {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+    .footer-identity {
+      display: grid;
+      gap: 4px;
       color: var(--ink);
-      font-weight: 400;
-      letter-spacing: 0.01em;
     }
 
-    .footer-inner > span:first-child::before {
-      content: "";
-      width: 16px;
-      height: 3px;
-      flex: 0 0 auto;
-      background: var(--gold);
+    .footer-identity strong {
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    .footer-identity span {
+      color: var(--muted);
+      font-size: 0.72rem;
     }
 
     @media (max-width: 900px) {
@@ -1231,14 +1247,12 @@
         gap: 4px;
       }
 
-      .footer-inner > span:first-child {
-        gap: 7px;
-        font-size: 0.64rem;
+      .footer-identity strong {
+        font-size: 0.62rem;
       }
 
-      .footer-inner > span:first-child::before {
-        width: 11px;
-        height: 2px;
+      .footer-identity span {
+        font-size: 0.54rem;
       }
 
       .button {
@@ -1269,29 +1283,12 @@
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="#top" aria-label="Dmytro Yakubovskyy home">
-        <strong>Yakubovskyy</strong>
-        <span>Interpreter & Translator</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open navigation menu"></button>
-      <div class="nav-links">
-        <a href="about.html">About</a>
-        <a href="how-i-work.html">How I Work</a>
-        <a href="interpreting.html">Interpreting</a>
-        <a href="translation.html">Translation & Revision</a>
-        <a href="engagements.html">Credentials</a>
-        <a href="contact.html">Contact</a>
-      </div>
-    </nav>
-  </header>
-
   <main>
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-content">
         <h1 id="hero-title">Dmytro Yakubovskyy</h1>
-        <p class="hero-role">Ukrainian-English and Russian-English Conference Interpreter and Translator</p>
+        <p class="hero-role">Ukrainian and Russian Conference Interpreter and Translator</p>
+        <p class="hero-subject">Legal, institutional, financial, regulatory, and executive matters</p>
       </div>
     </section>
 
@@ -1300,30 +1297,16 @@
         <div class="hero-meta">
           <span>MITI · MCIOL · ISO 17100</span>
           <span>Quality Assessor for the UK Ministry of Justice</span>
-          <span>London, Brussels, The Hague, and beyond</span>
+          <span class="location-line">London · <span class="brussels">Brussels</span> · The Hague · and beyond</span>
         </div>
         <p class="lead">With over 20 years of experience, I am trusted by European institutions and international organisations, law firms and legal-sector bodies, UK government departments and regulatory bodies, diplomatic representations, businesses, and private clients.</p>
-        <div class="hero-facts" aria-label="Professional overview">
-          <div class="hero-fact">
-            <strong>20+ years</strong>
-            <span>Professional experience across legal, institutional, diplomatic and high-stakes settings.</span>
-          </div>
-          <div class="hero-fact">
-            <strong>European and international</strong>
-            <span>Trusted by institutions, international organisations, government departments and regulatory bodies.</span>
-          </div>
-          <div class="hero-fact">
-            <strong>Legal-sector confidence</strong>
-            <span>Supporting law firms, legal-sector bodies, businesses and private clients where accuracy matters.</span>
-          </div>
-        </div>
         <div class="hero-quote">
           <blockquote>“Professional reliability, strong subject-matter understanding, and the ability to convey nuanced economic, financial, legal, and regulatory concepts clearly and accurately across languages.”</blockquote>
           <cite>International Monetary Fund (2013-)</cite>
         </div>
         <div class="hero-actions">
-          <a class="button primary" href="contact.html">Contact</a>
           <a class="button secondary" href="#">Download professional profile</a>
+          <a class="button primary" href="contact.html">Contact</a>
           <a class="button secondary" href="#">LinkedIn</a>
         </div>
       </div>
@@ -1354,7 +1337,7 @@
         <article class="home-link-row" id="home-credentials">
           <h2>Professional Engagements</h2>
           <p>Selected work across European governance, multilateral finance, United Nations programmes, UK government, judicial and arbitration contexts.</p>
-          <a class="button secondary" href="engagements.html">View credentials</a>
+          <a class="button secondary" href="engagements.html">View page</a>
         </article>
         <article class="home-link-row" id="home-contact">
           <h2>Contact</h2>
@@ -1666,8 +1649,10 @@
 
   <footer>
     <div class="footer-inner">
-      <span>Dmytro Yakubovskyy</span>
-      <span>Ukrainian-English & Russian-English Interpreter & Translator</span>
+      <div class="footer-identity">
+        <strong>DY / Dmytro Yakubovskyy</strong>
+        <span>Ukrainian & Russian Conference Interpreter & Translator</span>
+      </div>
     </div>
   </footer>
   <script>
