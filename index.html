@@ -1045,29 +1045,48 @@
       }
 
       .menu-toggle {
-        min-width: 72px;
+        position: relative;
+        width: 40px;
         min-height: 40px;
         margin-left: auto;
         padding: 0;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid rgba(22, 25, 23, 0.28);
-        border-radius: 3px;
-        background: rgba(255, 255, 255, 0.3);
+        border: 0;
+        background: transparent;
         color: var(--ink);
-        font: 500 0.7rem/1 var(--sans);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
         cursor: pointer;
       }
 
+      .menu-toggle::before,
+      .menu-toggle::after {
+        content: "";
+        position: absolute;
+        width: 22px;
+        height: 1px;
+        background: currentColor;
+        transition: transform 180ms ease, top 180ms ease, box-shadow 180ms ease;
+      }
+
       .menu-toggle::before {
-        content: "Menu";
+        top: 13px;
+        box-shadow: 0 7px 0 currentColor;
+      }
+
+      .menu-toggle::after {
+        top: 27px;
       }
 
       .menu-toggle[aria-expanded="true"]::before {
-        content: "Close";
+        top: 20px;
+        box-shadow: none;
+        transform: rotate(45deg);
+      }
+
+      .menu-toggle[aria-expanded="true"]::after {
+        top: 20px;
+        transform: rotate(-45deg);
       }
 
       .nav-links {
@@ -1248,11 +1267,23 @@
       }
 
       footer {
-        font-size: 0.7rem;
+        padding: 8px 0 14px;
+        font-size: 0.58rem;
+      }
+
+      .footer-inner {
+        padding-top: 12px;
+        gap: 4px;
       }
 
       .footer-inner > span:first-child {
-        font-size: 0.76rem;
+        gap: 7px;
+        font-size: 0.64rem;
+      }
+
+      .footer-inner > span:first-child::before {
+        width: 11px;
+        height: 2px;
       }
 
       .button {
