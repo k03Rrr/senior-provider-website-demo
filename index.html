@@ -1,0 +1,1670 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dmytro Yakubovskyy | Website Concept</title>
+  <style>
+    :root {
+      --paper: #fbfbf8;
+      --surface: #ffffff;
+      --ink: #161917;
+      --muted: #666a66;
+      --quiet: #969994;
+      --line: #e6e5df;
+      --accent: #4d5d56;
+      --accent-dark: #27342f;
+      --gold: #b79a55;
+      --soft: #f3f3ee;
+      --glass: rgba(251, 251, 248, 0.72);
+      --glass-strong: rgba(255, 255, 255, 0.78);
+      --glass-line: rgba(230, 229, 223, 0.78);
+      --measure: 72rem;
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --sans: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 24px;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin: 0;
+      pointer-events: none;
+    }
+
+    .nav {
+      position: relative;
+      width: min(1280px, calc(100% - 72px));
+      margin: 0 auto;
+      min-height: 82px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(205, 215, 216, 0.54);
+      border-radius: 3px;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08)),
+        rgba(236, 239, 237, 0.58);
+      box-shadow: 0 16px 36px rgba(20, 28, 30, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.32);
+      backdrop-filter: blur(18px) saturate(0.96);
+      -webkit-backdrop-filter: blur(18px) saturate(0.96);
+      pointer-events: auto;
+      transition: transform 260ms ease, opacity 260ms ease;
+    }
+
+    .nav::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0) 0,
+          rgba(255, 255, 255, 0) 91px,
+          rgba(226, 215, 204, 0.16) 91px,
+          rgba(226, 215, 204, 0.16) 108px
+        );
+      opacity: 0.6;
+    }
+
+    .brand {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 2px;
+      line-height: 1.1;
+      min-width: 0;
+      min-height: 58px;
+      padding: 0;
+      text-align: left;
+    }
+
+    .brand strong {
+      font-family: var(--sans);
+      font-size: 1.04rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      display: none;
+      color: rgba(29, 36, 34, 0.66);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-left: auto;
+      gap: 24px;
+      min-height: 58px;
+      padding: 0;
+      color: rgba(29, 36, 34, 0.9);
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
+
+    .nav-links a {
+      position: relative;
+      min-height: 58px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 16px;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 180ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      background: transparent;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .side-pagination {
+      position: fixed;
+      left: 24px;
+      top: 50%;
+      z-index: 9;
+      display: grid;
+      gap: 48px;
+      transform: translateY(-50%);
+    }
+
+    .side-pagination a {
+      width: 16px;
+      height: 2px;
+      display: block;
+      background: rgba(22, 25, 23, 0.16);
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .side-pagination a:hover,
+    .side-pagination a.is-active {
+      background: var(--ink);
+      transform: scaleX(1.25);
+      transform-origin: left center;
+    }
+
+    @supports (animation-timeline: scroll()) {
+      .nav {
+        animation: header-drift linear both;
+        animation-timeline: scroll();
+        animation-range: 0 220px;
+      }
+
+      @keyframes header-drift {
+        from {
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        to {
+          transform: translateY(-8px);
+          opacity: 0.94;
+        }
+      }
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: min(860px, 100svh);
+      margin: 0 auto;
+      padding: 190px max(36px, calc((100vw - 1280px) / 2 + 36px)) 86px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(8, 13, 14, 0.82) 0%, rgba(8, 13, 14, 0.48) 38%, rgba(8, 13, 14, 0.12) 72%),
+        linear-gradient(0deg, rgba(8, 13, 14, 0.78) 0%, rgba(8, 13, 14, 0.18) 58%, rgba(8, 13, 14, 0.06) 100%),
+        url("assets/home-hero-institutional.png") center 48% / cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 13, 14, 0.26), transparent 32%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 96px);
+      opacity: 0.42;
+      pointer-events: none;
+    }
+
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      width: min(920px, 100%);
+      color: #ffffff;
+      text-shadow: 0 2px 28px rgba(5, 9, 10, 0.42);
+    }
+
+    .hero .eyebrow {
+      margin-bottom: 18px;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .hero h1 {
+      color: #ffffff;
+      font-size: clamp(3.8rem, 7.4vw, 7rem);
+      line-height: 0.94;
+    }
+
+    .hero .hero-role {
+      max-width: 760px;
+      margin-top: 24px;
+      color: rgba(255, 255, 255, 0.92);
+      font-family: var(--sans);
+      font-size: clamp(1.08rem, 2vw, 1.45rem);
+      font-weight: 450;
+      line-height: 1.45;
+    }
+
+    .hero-summary {
+      padding: 76px 0 88px;
+      background: var(--paper);
+    }
+
+    .hero-summary-inner {
+      width: min(var(--measure), calc(100% - 72px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 24px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 650;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 900px;
+      font-size: clamp(3rem, 6vw, 5.6rem);
+      letter-spacing: -0.015em;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3.6vw, 3.1rem);
+    }
+
+    h3 {
+      font-size: 1.45rem;
+      line-height: 1.2;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin: 32px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2.2vw, 1.32rem);
+      line-height: 1.58;
+    }
+
+    .hero-role {
+      max-width: 860px;
+      margin: 20px 0 0;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: clamp(1.65rem, 3.2vw, 2.8rem);
+      font-weight: 500;
+      line-height: 1.08;
+    }
+
+    .hero-meta {
+      margin-top: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-meta span {
+      position: relative;
+    }
+
+    .hero-meta span + span::before {
+      content: "";
+      position: absolute;
+      left: -12px;
+      top: 50%;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--quiet);
+    }
+
+    .hero-facts {
+      max-width: 980px;
+      margin-top: 38px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid rgba(22, 25, 23, 0.18);
+      border-left: 1px solid rgba(22, 25, 23, 0.18);
+    }
+
+    .hero-fact {
+      min-height: 150px;
+      padding: 22px;
+      border-right: 1px solid rgba(22, 25, 23, 0.18);
+      border-bottom: 1px solid rgba(22, 25, 23, 0.18);
+      background: rgba(255, 255, 255, 0.42);
+    }
+
+    .hero-fact strong {
+      display: block;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.28rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .hero-fact span {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .hero-quote {
+      max-width: 980px;
+      margin: 34px 0 0;
+      padding: 28px 30px;
+      border: 1px solid rgba(22, 25, 23, 0.18);
+      background: rgba(251, 251, 248, 0.72);
+    }
+
+    .hero-quote blockquote {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+      line-height: 1.35;
+    }
+
+    .hero-quote cite {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-style: normal;
+    }
+
+    .location-band {
+      width: min(var(--measure), calc(100% - 72px));
+      margin: 72px auto;
+      background: var(--surface);
+    }
+
+    .location-band img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hero-actions {
+      margin-top: 48px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 20px;
+      border: 1px solid rgba(22, 25, 23, 0.82);
+      border-radius: 8px;
+      font-size: 0.92rem;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .button.primary {
+      background: var(--ink);
+      color: var(--surface);
+    }
+
+    .button.secondary {
+      border-color: var(--line);
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.62);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button.secondary:hover {
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.74);
+    }
+
+    .cta-disclosure {
+      margin-top: 38px;
+      max-width: 780px;
+    }
+
+    .cta-disclosure-toggle {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 20px;
+      border: 1px solid rgba(22, 25, 23, 0.82);
+      border-radius: 8px;
+      background: var(--ink);
+      color: var(--surface);
+      font: inherit;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .cta-disclosure-toggle:hover {
+      transform: translateY(-1px);
+    }
+
+    .cta-disclosure-toggle::after {
+      content: "+";
+      margin-left: 12px;
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+
+    .cta-disclosure.is-open .cta-disclosure-toggle::after {
+      content: "-";
+    }
+
+    .cta-disclosure-panel {
+      display: none;
+      margin-top: 22px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .cta-disclosure.is-open .cta-disclosure-panel {
+      display: grid;
+      gap: 18px;
+    }
+
+    .cta-disclosure-panel p {
+      margin: 0;
+      max-width: 760px;
+    }
+
+    .identity-panel {
+      border-left: 1px solid var(--line);
+      padding-left: 36px;
+    }
+
+    .identity-panel dl {
+      margin: 0;
+      display: grid;
+      gap: 22px;
+    }
+
+    .identity-panel dt,
+    .meta-label {
+      color: var(--quiet);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .identity-panel dd {
+      margin: 5px 0 0;
+      color: var(--ink);
+      font-size: 0.96rem;
+      line-height: 1.5;
+    }
+
+    .hero-visual {
+      min-height: 500px;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      border: 1px solid rgba(217, 222, 216, 0.54);
+      background:
+        linear-gradient(135deg, rgba(29, 36, 34, 0.12), rgba(79, 100, 92, 0.2)),
+        rgba(247, 248, 245, 0.42);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      overflow: hidden;
+    }
+
+    .photo-placeholder {
+      position: relative;
+      min-height: 280px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(29, 36, 34, 0.1) 1px, transparent 1px),
+        linear-gradient(rgba(29, 36, 34, 0.08) 1px, transparent 1px),
+        linear-gradient(145deg, #d8ddd8 0%, #f3f5f2 45%, #aeb8b1 100%);
+      background-size: 56px 56px, 56px 56px, cover;
+    }
+
+    .photo-placeholder::before,
+    .photo-placeholder::after {
+      content: "";
+      position: absolute;
+      inset: auto auto 0 14%;
+      width: 14%;
+      height: 72%;
+      border-left: 1px solid rgba(29, 36, 34, 0.24);
+      border-right: 1px solid rgba(29, 36, 34, 0.16);
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .photo-placeholder::after {
+      left: auto;
+      right: 14%;
+      height: 88%;
+    }
+
+    .hero-visual .photo-placeholder {
+      min-height: auto;
+      height: 100%;
+      background:
+        linear-gradient(rgba(29, 36, 34, 0.08), rgba(29, 36, 34, 0.2)),
+        linear-gradient(90deg, rgba(29, 36, 34, 0.12) 1px, transparent 1px),
+        linear-gradient(160deg, #dfe3de 0%, #f9faf7 46%, #9da9a2 100%);
+      background-size: cover, 74px 74px, cover;
+    }
+
+    .photo-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 18px;
+      border-top: 1px solid rgba(217, 222, 216, 0.9);
+      background: rgba(247, 248, 245, 0.86);
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .visual-break {
+      margin-top: 72px;
+      display: grid;
+      grid-template-columns: 0.68fr 0.32fr;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .visual-break .photo-placeholder {
+      min-height: 360px;
+    }
+
+    .visual-note {
+      padding-bottom: 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .section {
+      border-top: 1px solid var(--line);
+      padding: 110px 0;
+    }
+
+    main > .section:not(.home-links),
+    main > .location-band {
+      display: none;
+    }
+
+    .home-links {
+      padding: 76px 0 112px;
+      background: var(--paper);
+    }
+
+    .home-links-inner {
+      width: min(var(--measure), calc(100% - 72px));
+      margin: 0 auto;
+      border-top: 1px solid var(--line);
+    }
+
+    .home-link-row {
+      min-height: 154px;
+      display: grid;
+      grid-template-columns: minmax(180px, 0.38fr) minmax(0, 1fr) auto;
+      gap: 48px;
+      align-items: center;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .home-link-row h2 {
+      margin: 0;
+      font-size: clamp(1.65rem, 3vw, 2.5rem);
+    }
+
+    .home-link-row p {
+      max-width: 640px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .home-link-row .button {
+      min-width: 128px;
+    }
+
+    .section-inner {
+      width: min(var(--measure), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+      gap: 76px;
+      align-items: start;
+    }
+
+    .section-kicker {
+      position: sticky;
+      top: 110px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-kicker p {
+      margin: 0;
+      max-width: 280px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .copy {
+      display: grid;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .copy p {
+      margin: 0;
+      max-width: 780px;
+    }
+
+    .statement {
+      max-width: 880px;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.2vw, 2.75rem);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+    }
+
+    .principles {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .principle {
+      min-height: 210px;
+      padding: 28px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .principle p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.58;
+    }
+
+    .service-list {
+      display: grid;
+      border-top: 1px solid var(--line);
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 0.42fr 1fr;
+      gap: 48px;
+      padding: 42px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .service-row p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .service-row ul {
+      margin: 18px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .accordion {
+      margin-top: 56px;
+      border-top: 1px solid var(--line);
+    }
+
+    .accordion-intro {
+      max-width: 720px;
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .accordion details {
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+    }
+
+    .accordion summary {
+      min-height: 92px;
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) 28px;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 0;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion-number {
+      color: var(--quiet);
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+    }
+
+    .accordion-title {
+      display: grid;
+      gap: 6px;
+    }
+
+    .accordion-title strong {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.18;
+    }
+
+    .accordion-title span {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.48;
+    }
+
+    .accordion-icon {
+      color: var(--ink);
+      font-size: 1.2rem;
+      line-height: 1;
+      text-align: right;
+      transition: transform 180ms ease;
+    }
+
+    .accordion details[open] .accordion-icon {
+      transform: rotate(45deg);
+    }
+
+    .accordion-body {
+      max-width: 760px;
+      padding: 0 0 26px 56px;
+      color: var(--muted);
+    }
+
+    .accordion-body p {
+      margin: 0;
+    }
+
+    .proof {
+      background: var(--paper);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .location-card {
+      display: grid;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .location-card .photo-placeholder {
+      min-height: 310px;
+    }
+
+    .location-card.large .photo-placeholder {
+      min-height: 520px;
+    }
+
+    .location-copy {
+      padding: 24px;
+    }
+
+    .location-copy p {
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+
+    .location-stack {
+      display: grid;
+      gap: 28px;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin-top: 52px;
+    }
+
+    .proof-card {
+      min-height: 260px;
+      padding: 34px;
+      background: var(--paper);
+    }
+
+    .proof-card blockquote {
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 1.28rem;
+      line-height: 1.34;
+    }
+
+    .institutions {
+      margin-top: 48px;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      background: transparent;
+      padding: 8px 13px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .contact {
+      padding-bottom: 72px;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1fr 0.78fr;
+      gap: 64px;
+      padding: 52px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.88)),
+        linear-gradient(145deg, #f6f6f1 0%, #ffffff 52%, #eceee9 100%);
+    }
+
+    .contact-panel p {
+      margin: 24px 0 0;
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .enquiry-list {
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 15px;
+      list-style: none;
+    }
+
+    .enquiry-list li {
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .contact-details {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact-details p {
+      margin: 0;
+    }
+
+    .contact-signoff {
+      margin-top: 36px;
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+    }
+
+    .contact-signoff strong {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 500;
+    }
+
+    footer {
+      padding: 14px 0 36px;
+      background: var(--surface);
+      color: #424743;
+      font-size: 0.86rem;
+    }
+
+    .footer-inner {
+      width: min(1494px, calc(100% - 72px));
+      margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid rgba(22, 25, 23, 0.46);
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .footer-inner > span:first-child {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .footer-inner > span:first-child::before {
+      content: "";
+      width: 16px;
+      height: 3px;
+      flex: 0 0 auto;
+      background: var(--gold);
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        min-height: auto;
+        width: min(100% - 24px, var(--measure));
+        align-items: start;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .side-pagination {
+        display: none;
+      }
+
+      .hero,
+      .section-grid,
+      .contact-panel,
+      .location-grid,
+      .visual-break {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .hero {
+        min-height: 720px;
+        padding: 148px 36px 64px;
+        background-position: 58% center;
+      }
+
+      .hero-summary-inner {
+        width: min(100% - 72px, var(--measure));
+      }
+
+      .identity-panel {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+        padding: 28px 0 0;
+      }
+
+      .hero-visual {
+        min-height: 460px;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .home-links {
+        padding: 52px 0 72px;
+      }
+
+      .home-links-inner {
+        width: min(100% - 36px, var(--measure));
+      }
+
+      .home-link-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 28px 0;
+      }
+
+      .home-link-row .button {
+        width: fit-content;
+      }
+
+      .section-kicker {
+        position: static;
+      }
+
+      .principles,
+      .proof-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-facts {
+        grid-template-columns: 1fr;
+      }
+
+      .service-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .accordion summary {
+        grid-template-columns: 32px minmax(0, 1fr) 24px;
+      }
+
+      .accordion-body {
+        padding-left: 46px;
+      }
+
+      .contact-panel {
+        padding: 28px;
+      }
+
+      .location-card.large .photo-placeholder {
+        min-height: 340px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .hero,
+      .section-inner,
+      .nav,
+      .footer-inner {
+        width: min(100% - 36px, var(--measure));
+      }
+
+      .hero {
+        width: 100%;
+        min-height: 650px;
+        padding: 128px 18px 48px;
+        background-position: 61% center;
+      }
+
+      .hero::before {
+        background: linear-gradient(180deg, rgba(8, 13, 14, 0.22), transparent 25%);
+      }
+
+      .hero h1 {
+        max-width: 11ch;
+        font-size: clamp(2.7rem, 12.6vw, 3.35rem);
+        line-height: 0.96;
+      }
+
+      .hero .hero-role {
+        max-width: 25ch;
+        font-size: 1rem;
+      }
+
+      .hero-summary {
+        padding: 54px 0 64px;
+      }
+
+      .hero-summary-inner {
+        width: min(100% - 36px, var(--measure));
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      .principles,
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .principle {
+        min-height: auto;
+      }
+
+      .hero-actions,
+      .footer-inner {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-meta {
+        display: grid;
+        gap: 6px;
+      }
+
+      .hero-meta span + span::before {
+        display: none;
+      }
+
+      .location-band {
+        width: min(100% - 36px, var(--measure));
+        margin: 48px auto;
+      }
+
+      .hero-visual,
+      .visual-break .photo-placeholder,
+      .location-card .photo-placeholder,
+      .location-card.large .photo-placeholder {
+        min-height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="side-pagination" aria-label="Section pagination">
+    <a class="is-active" href="#top" data-section="top" aria-label="Go to Home"></a>
+    <a href="#home-about" data-section="home-about" aria-label="Go to About"></a>
+    <a href="#home-work" data-section="home-work" aria-label="Go to How I Work"></a>
+    <a href="#home-interpreting" data-section="home-interpreting" aria-label="Go to Interpreting"></a>
+    <a href="#home-translation" data-section="home-translation" aria-label="Go to Translation and Revision"></a>
+    <a href="#home-credentials" data-section="home-credentials" aria-label="Go to Credentials"></a>
+    <a href="#home-contact" data-section="home-contact" aria-label="Go to Contact"></a>
+  </nav>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Dmytro Yakubovskyy home">
+        <strong>Yakubovskyy</strong>
+        <span>Interpreter & Translator</span>
+      </a>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="how-i-work.html">How I Work</a>
+        <a href="interpreting.html">Interpreting</a>
+        <a href="translation.html">Translation & Revision</a>
+        <a href="engagements.html">Credentials</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <h1 id="hero-title">Dmytro Yakubovskyy</h1>
+        <p class="hero-role">Ukrainian-English and Russian-English Conference Interpreter and Translator</p>
+      </div>
+    </section>
+
+    <section class="hero-summary" aria-label="Professional overview">
+      <div class="hero-summary-inner">
+        <div class="hero-meta">
+          <span>MITI · MCIOL · ISO 17100</span>
+          <span>Quality Assessor for the UK Ministry of Justice</span>
+          <span>London, Brussels, The Hague, and beyond</span>
+        </div>
+        <p class="lead">With over 20 years of experience, I am trusted by European institutions and international organisations, law firms and legal-sector bodies, UK government departments and regulatory bodies, diplomatic representations, businesses, and private clients.</p>
+        <div class="hero-facts" aria-label="Professional overview">
+          <div class="hero-fact">
+            <strong>20+ years</strong>
+            <span>Professional experience across legal, institutional, diplomatic and high-stakes settings.</span>
+          </div>
+          <div class="hero-fact">
+            <strong>European and international</strong>
+            <span>Trusted by institutions, international organisations, government departments and regulatory bodies.</span>
+          </div>
+          <div class="hero-fact">
+            <strong>Legal-sector confidence</strong>
+            <span>Supporting law firms, legal-sector bodies, businesses and private clients where accuracy matters.</span>
+          </div>
+        </div>
+        <div class="hero-quote">
+          <blockquote>“Professional reliability, strong subject-matter understanding, and the ability to convey nuanced economic, financial, legal, and regulatory concepts clearly and accurately across languages.”</blockquote>
+          <cite>International Monetary Fund (2013-)</cite>
+        </div>
+        <div class="hero-actions">
+          <a class="button primary" href="contact.html">Contact</a>
+          <a class="button secondary" href="#">Download professional profile</a>
+          <a class="button secondary" href="#">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section home-links" aria-label="Explore the website">
+      <div class="home-links-inner">
+        <article class="home-link-row" id="home-about">
+          <h2>About</h2>
+          <p>Professional background at the intersection of language, international affairs, institutional practice, legal process and decision-making.</p>
+          <a class="button secondary" href="about.html">View page</a>
+        </article>
+        <article class="home-link-row" id="home-work">
+          <h2>How I Work</h2>
+          <p>Preparation, institutional awareness, discretion and professional judgement that help communication proceed without unnecessary friction.</p>
+          <a class="button secondary" href="how-i-work.html">View page</a>
+        </article>
+        <article class="home-link-row" id="home-interpreting">
+          <h2>Interpreting</h2>
+          <p>Simultaneous, consecutive and whispered interpreting for legal, governmental, diplomatic, institutional and private-sector settings.</p>
+          <a class="button secondary" href="interpreting.html">View page</a>
+        </article>
+        <article class="home-link-row" id="home-translation">
+          <h2>Translation & Revision</h2>
+          <p>Written translation, revision and proofreading where accuracy, consistency and accountability are essential.</p>
+          <a class="button secondary" href="translation.html">View page</a>
+        </article>
+        <article class="home-link-row" id="home-credentials">
+          <h2>Professional Engagements</h2>
+          <p>Selected work across European governance, multilateral finance, United Nations programmes, UK government, judicial and arbitration contexts.</p>
+          <a class="button secondary" href="engagements.html">View credentials</a>
+        </article>
+        <article class="home-link-row" id="home-contact">
+          <h2>Contact</h2>
+          <p>Discuss an assignment, availability, scope, language combination or the most appropriate interpreting mode and delivery format.</p>
+          <a class="button primary" href="contact.html">Get in touch</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="location-band" aria-label="London, Brussels, The Hague and European institutions">
+      <img src="assets/where-i-work-white.png" alt="Where I work: London, Brussels, The Hague, Europe and beyond">
+    </section>
+
+    <section class="section" aria-label="Professional summary">
+      <div class="section-inner">
+        <aside class="identity-panel" aria-label="Professional summary">
+          <dl>
+            <div>
+              <dt>Experience</dt>
+              <dd>20+ years across judicial, arbitration, institutional, diplomatic, policy, and private-sector contexts.</dd>
+            </div>
+            <div>
+              <dt>Languages</dt>
+              <dd>Ukrainian <> English<br>Russian <> English</dd>
+            </div>
+            <div>
+              <dt>Credentials</dt>
+              <dd>MITI, MCIOL, MUATI, ISO 17100 Qualified Translator, Translation Quality Assessor for the UK Ministry of Justice.</dd>
+            </div>
+            <div>
+              <dt>Base</dt>
+              <dd>Based near London. Working nationally and internationally, in person, remote, and hybrid.</dd>
+            </div>
+          </dl>
+        </aside>
+        <div class="visual-break">
+          <div class="photo-placeholder" role="img" aria-label="Optional quiet institutional architecture image below the hero"></div>
+          <p class="visual-note">Optional second image below the first screen: a restrained architectural pause, not a decorative gallery moment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="profile">
+      <div class="section-inner section-grid">
+        <div class="section-kicker">
+          <p class="meta-label">Profile</p>
+          <p>A professional profile page for readers who need confidence quickly, not persuasion loudly.</p>
+        </div>
+        <div class="copy">
+          <p class="statement">A cross-system practice shaped by language, institutional procedure, legal process and international affairs.</p>
+          <p>Dmytro Yakubovskyy is a Ukrainian-English and Russian-English interpreter and translator working across the United Kingdom, Brussels, and internationally. His work regularly supports court and arbitration proceedings, regulatory hearings, ministerial and parliamentary meetings, international conferences, government negotiations, technical consultations, and discreet private assignments.</p>
+          <p>Academic training in translation and interpreting, international finance, and business administration complements practical experience across public and private sectors. Professional standards, ethics, confidentiality, preparation, and linguistic consistency form the baseline for every assignment, regardless of scale or format.</p>
+          <div class="visual-break">
+            <div class="photo-placeholder" role="img" aria-label="Restrained About page photo placeholder, portrait optional"></div>
+            <p class="visual-note">About image direction: restrained professional or architectural photograph. Personal portrait is optional.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section-inner">
+        <div class="section-grid">
+          <div class="section-kicker">
+            <p class="meta-label">How I Work</p>
+            <p>The page should make the client feel that risk is being reduced before the assignment begins.</p>
+          </div>
+          <div>
+            <p class="statement">Smooth communication is rarely accidental. It follows from preparation, institutional awareness and proportionate judgement.</p>
+            <div class="principles">
+              <article class="principle">
+                <h3>Preparation</h3>
+                <p>Materials, terminology, context, participants, sensitivities and practical details are clarified before they can affect the assignment.</p>
+              </article>
+              <article class="principle">
+                <h3>Register</h3>
+                <p>Courts, arbitration panels, regulatory bodies, diplomatic meetings and boards each carry conventions around tone, pace and intervention.</p>
+              </article>
+              <article class="principle">
+                <h3>Continuity</h3>
+                <p>In-person, remote and hybrid formats are managed with attention to rhythm, coordination, language flow and technical reliability.</p>
+              </article>
+              <article class="principle">
+                <h3>Discretion</h3>
+                <p>Confidentiality and role boundaries are treated as inherent to the work, especially where legal, diplomatic or reputational stakes are high.</p>
+              </article>
+            </div>
+            <div class="cta-disclosure" data-disclosure>
+              <button class="cta-disclosure-toggle" type="button" aria-expanded="false" aria-controls="working-process-more">Read more about the working process</button>
+              <div class="cta-disclosure-panel" id="working-process-more">
+                <p>In practice, this approach is designed to reduce uncertainty before it affects the assignment. Briefing materials, terminology, format, participants, sensitivities, timing and technical arrangements are clarified early where possible.</p>
+                <p>During the assignment, the focus remains on continuity, appropriate register and faithful communication, so that participants can concentrate on the substance of the discussion rather than on the mechanics of interpretation.</p>
+              </div>
+            </div>
+            <div class="visual-break">
+              <div class="photo-placeholder" role="img" aria-label="Quiet architectural detail for How I Work"></div>
+              <p class="visual-note">How I Work can carry one quiet detail image: stone, corridor, court-adjacent architecture, or formal interior.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="section-inner section-grid">
+        <div class="section-kicker">
+          <p class="meta-label">Services</p>
+          <p>Service information is practical and restrained, with guidance where the client may need it.</p>
+        </div>
+        <div class="service-list">
+          <article class="service-row">
+            <h3>Interpreting</h3>
+            <div>
+              <p>Simultaneous, consecutive and whispered interpreting for legal, institutional, diplomatic, regulatory, conference and private-sector settings.</p>
+              <ul>
+                <li>On-site, remote and hybrid assignments</li>
+                <li>Single-language and multilingual configurations</li>
+                <li>Mode selection advised where format is not straightforward</li>
+              </ul>
+            </div>
+          </article>
+          <article class="service-row">
+            <h3>Translation</h3>
+            <div>
+              <p>Written translation for documents that are read closely, relied upon in decision-making or form part of a formal record.</p>
+              <ul>
+                <li>Legal, policy, institutional and technical documentation</li>
+                <li>Terminology consistency across files and over time</li>
+                <li>Certified translations where required</li>
+              </ul>
+            </div>
+          </article>
+          <article class="service-row">
+            <h3>Revision</h3>
+            <div>
+              <p>Revision and proofreading for translated and original texts, with attention to coherence, internal consistency, register and fitness for purpose.</p>
+              <ul>
+                <li>Formal submissions and publication-ready documents</li>
+                <li>Terminology and reference checks</li>
+                <li>Continuity with existing glossaries and document sets</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="where">
+      <div class="section-inner section-grid">
+        <div class="section-kicker">
+          <p class="meta-label">Where I Work</p>
+          <p>This is the best place for two or three location photographs: Brussels, government buildings, institutional exteriors.</p>
+        </div>
+        <div>
+          <p class="statement">Based near London, working across the UK, Brussels, The Hague and internationally where the setting requires procedural confidence.</p>
+          <div class="location-grid">
+            <article class="location-card large">
+              <div class="photo-placeholder" role="img" aria-label="Brussels or EU institutional building photo placeholder"></div>
+              <div class="location-copy">
+                <h3>Brussels and European institutions</h3>
+                <p>For EU, multilateral, regulatory and intergovernmental settings where language sits inside formal process.</p>
+              </div>
+            </article>
+            <div class="location-stack">
+              <article class="location-card">
+                <div class="photo-placeholder" role="img" aria-label="London legal or government architecture photo placeholder"></div>
+                <div class="location-copy">
+                  <h3>London and the UK</h3>
+                  <p>Legal, arbitration, government, regulatory and private-sector assignments.</p>
+                </div>
+              </article>
+              <article class="location-card">
+                <div class="photo-placeholder" role="img" aria-label="The Hague or international institutional architecture photo placeholder"></div>
+                <div class="location-copy">
+                  <h3>The Hague and beyond</h3>
+                  <p>International matters requiring preparation, discretion and continuity across teams.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section proof" id="credentials">
+      <div class="section-inner">
+        <div class="section-grid">
+          <div class="section-kicker">
+            <p class="meta-label">Credentials</p>
+            <p>Proof should feel evidential, not decorative. No logo wall needed for the first version.</p>
+          </div>
+          <div>
+            <p class="statement">Engagements span European governance, multilateral finance, United Nations programmes, UK government departments, judicial proceedings and arbitration.</p>
+            <div class="accordion" aria-label="Expandable credentials overview">
+              <p class="accordion-intro">For text-heavy pages, the first view can show only the most relevant proof points. Each section expands when the reader wants more detail.</p>
+              <details open>
+                <summary>
+                  <span class="accordion-number">01</span>
+                  <span class="accordion-title">
+                    <strong>European governance and regulatory frameworks</strong>
+                    <span>AML/CFT, rule of law, European institutions, parliamentary and intergovernmental settings.</span>
+                  </span>
+                  <span class="accordion-icon">+</span>
+                </summary>
+                <div class="accordion-body">
+                  <p>Includes work connected to European Union frameworks, Council of Europe, OSCE, European Parliament and related institutional dialogue where terminology, procedure and discretion matter.</p>
+                </div>
+              </details>
+              <details>
+                <summary>
+                  <span class="accordion-number">02</span>
+                  <span class="accordion-title">
+                    <strong>Multilateral development and finance</strong>
+                    <span>World Bank, EIB, IMF and international finance contexts with complex policy and legal language.</span>
+                  </span>
+                  <span class="accordion-icon">+</span>
+                </summary>
+                <div class="accordion-body">
+                  <p>This section can hold longer institutional references and endorsements while keeping the page calm and scannable on mobile.</p>
+                </div>
+              </details>
+              <details>
+                <summary>
+                  <span class="accordion-number">03</span>
+                  <span class="accordion-title">
+                    <strong>Judicial and arbitration contexts</strong>
+                    <span>Court hearings, arbitration proceedings, sensitive legal matters and high-value disputes.</span>
+                  </span>
+                  <span class="accordion-icon">+</span>
+                </summary>
+                <div class="accordion-body">
+                  <p>Detailed examples and quotes can live inside the expanded state, preserving credibility without overwhelming the default view.</p>
+                </div>
+              </details>
+            </div>
+            <div class="proof-grid" aria-label="Selected professional evidence">
+              <article class="proof-card">
+                <p class="meta-label">European Governance</p>
+                <blockquote>“Linguistic accuracy, a strong grasp of complex AML/CFT concepts, and professional composure.”</blockquote>
+              </article>
+              <article class="proof-card">
+                <p class="meta-label">Multilateral Finance</p>
+                <blockquote>“A rare combination of intellectual acumen, self-motivation, easy communication, professionalism and efficiency.”</blockquote>
+              </article>
+              <article class="proof-card">
+                <p class="meta-label">Judicial Contexts</p>
+                <blockquote>“Instrumental in facilitating communication between our client, counsel, the Court and other involved parties.”</blockquote>
+              </article>
+            </div>
+            <div class="institutions">
+              <span class="tag">Council of Europe</span>
+              <span class="tag">OSCE</span>
+              <span class="tag">European Parliament</span>
+              <span class="tag">World Bank</span>
+              <span class="tag">IMF</span>
+              <span class="tag">UNDP</span>
+              <span class="tag">HMRC</span>
+              <span class="tag">NCA</span>
+              <span class="tag">LCIA</span>
+              <span class="tag">High Court of England and Wales</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="section-inner">
+        <div class="contact-panel">
+          <div>
+            <p class="meta-label">Contact</p>
+            <h2>Get in touch to discuss your assignment, availability or scope.</h2>
+            <p>If you require a Ukrainian or Russian interpreter or translator in London, elsewhere in the UK, or across Europe, please get in touch to discuss your assignment, availability, or scope. Enquiries from institutions, law firms, government departments, corporate teams, agencies, and private clients are welcome.</p>
+            <p>As a consultant interpreter and translator, I am happy to advise on the most appropriate mode and delivery configuration where helpful. If circumstances are not straightforward, a brief exchange is often sufficient to clarify considerations and ensure that the chosen approach supports the objectives of the meeting or document.</p>
+            <p>This information is not obligatory, but it helps ensure that practical arrangements can be addressed efficiently. Enquiries are handled promptly, subject to availability.</p>
+            <div class="contact-details">
+              <div>
+                <p class="meta-label">Confidentiality</p>
+                <p>All communications and materials are treated in strict confidence and with professional discretion.</p>
+              </div>
+              <div>
+                <p class="meta-label">Contact details</p>
+                <p>Email: [your email]</p>
+                <p>Telephone: [your number]</p>
+              </div>
+            </div>
+            <div class="contact-signoff">
+              <strong>Dmytro Yakubovskyy</strong>
+              <span>Ukrainian-English & Russian-English Interpreter & Translator</span>
+              <span>Based near London - working nationally and internationally.</span>
+            </div>
+            <div class="hero-actions">
+              <a class="button primary" href="mailto:email@example.com">Email enquiry</a>
+              <a class="button secondary" href="#">Download professional profile</a>
+            </div>
+          </div>
+          <ul class="enquiry-list" aria-label="Helpful enquiry details">
+            <li>The nature of the assignment: interpreting, translation, revision, or a combination.</li>
+            <li>The date(s) and location, or whether remote participation is envisaged.</li>
+            <li>The languages involved.</li>
+            <li>The expected duration or approximate volume.</li>
+            <li>Relevant deadlines.</li>
+            <li>Any additional context that may be relevant.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Dmytro Yakubovskyy</span>
+      <span>Ukrainian-English & Russian-English Interpreter & Translator</span>
+    </div>
+  </footer>
+  <script>
+    const paginationLinks = Array.from(document.querySelectorAll(".side-pagination a"));
+    const sections = paginationLinks
+      .map((link) => document.getElementById(link.dataset.section))
+      .filter(Boolean);
+
+    const setActiveSection = (id) => {
+      paginationLinks.forEach((link) => {
+        link.classList.toggle("is-active", link.dataset.section === id);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible) {
+          setActiveSection(visible.target.id);
+        }
+      },
+      {
+        rootMargin: "-35% 0px -45% 0px",
+        threshold: [0.1, 0.25, 0.5, 0.75],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    document.querySelectorAll("[data-disclosure]").forEach((disclosure) => {
+      const button = disclosure.querySelector(".cta-disclosure-toggle");
+
+      button.addEventListener("click", () => {
+        const isOpen = disclosure.classList.toggle("is-open");
+        button.setAttribute("aria-expanded", String(isOpen));
+      });
+    });
+  </script>
+</body>
+</html>
