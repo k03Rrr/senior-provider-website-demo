@@ -422,9 +422,27 @@ h3 {
   width: 100%;
   min-height: 420px;
   display: block;
-  border: 1px solid var(--line);
   object-fit: cover;
   object-position: center;
+  filter: saturate(0.74) contrast(1.05) brightness(0.92);
+}
+
+.visual-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #dce9ee;
+}
+
+.visual-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(20, 39, 48, 0.2), rgba(70, 111, 129, 0.05) 64%, rgba(255, 255, 255, 0.03)),
+    linear-gradient(0deg, rgba(19, 36, 44, 0.18), transparent 52%);
+  mix-blend-mode: multiply;
 }
 
 .visual.small {
@@ -459,6 +477,10 @@ h3 {
   aspect-ratio: auto;
   border: 0;
   object-fit: contain;
+}
+
+.credentials-visual .visual-frame {
+  border: 0;
 }
 
 .visual-caption {
