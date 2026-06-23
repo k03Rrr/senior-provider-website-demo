@@ -445,6 +445,14 @@ h3 {
   mix-blend-mode: multiply;
 }
 
+.visual-frame--original::after {
+  content: none;
+}
+
+.visual-frame--original .visual {
+  filter: none;
+}
+
 .visual.small {
   min-height: 340px;
   aspect-ratio: 4 / 5;
