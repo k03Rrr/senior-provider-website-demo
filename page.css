@@ -1,12 +1,12 @@
 :root {
-  --paper: #fcfaf5;
-  --surface: #fffefa;
+  --paper: #f8fbfc;
+  --surface: #ffffff;
   --ink: #161917;
-  --muted: #69665f;
-  --quiet: #989289;
-  --line: #e8e2d7;
-  --accent: #58645a;
-  --gold: #b69650;
+  --muted: #626b70;
+  --quiet: #919da3;
+  --line: #e1e9ed;
+  --accent: #58717c;
+  --gold: #8daab6;
   --measure: 72rem;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --sans: Inter, "Segoe UI", Roboto, Arial, sans-serif;
@@ -56,7 +56,7 @@ a {
   overflow: hidden;
   border: 1px solid rgba(205, 215, 216, 0.54);
   border-radius: 3px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08)), rgba(236, 239, 237, 0.58);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(248, 252, 254, 0.16)), rgba(235, 243, 247, 0.62);
   box-shadow: 0 16px 36px rgba(20, 28, 30, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.32);
   backdrop-filter: blur(18px) saturate(0.96);
   -webkit-backdrop-filter: blur(18px) saturate(0.96);
@@ -75,9 +75,12 @@ a {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-weight: 300;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+}
+
+.site-logo {
+  width: 168px;
+  height: 36px;
+  display: block;
 }
 
 .nav-links {
@@ -448,7 +451,7 @@ h3 {
   top: 142px;
   padding: 18px 18px 16px;
   border-left: 3px solid var(--gold);
-  background: #f3f2ef;
+  background: #f1f6f8;
 }
 
 .credentials-visual .visual {
@@ -597,20 +600,10 @@ footer {
   gap: 18px;
 }
 
-.footer-identity {
-  display: grid;
-  gap: 4px;
-  color: var(--ink);
-}
-
-.footer-identity strong {
-  font-size: 0.86rem;
-  font-weight: 500;
-}
-
-.footer-identity span {
-  color: var(--muted);
-  font-size: 0.72rem;
+.footer-logo {
+  width: 168px;
+  height: 36px;
+  display: block;
 }
 
 @media (max-width: 900px) {
@@ -744,12 +737,9 @@ footer {
     gap: 4px;
   }
 
-  .footer-identity strong {
-    font-size: 0.62rem;
-  }
-
-  .footer-identity span {
-    font-size: 0.54rem;
+  .footer-logo {
+    width: 142px;
+    height: auto;
   }
 
   .button {

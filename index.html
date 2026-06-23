@@ -7,19 +7,19 @@
   <title>Dmytro Yakubovskyy | Website Concept</title>
   <style>
     :root {
-      --paper: #fcfaf5;
-      --surface: #fffefa;
+      --paper: #f8fbfc;
+      --surface: #ffffff;
       --ink: #161917;
-      --muted: #69665f;
-      --quiet: #989289;
-      --line: #e8e2d7;
-      --accent: #58645a;
-      --accent-dark: #27342f;
-      --gold: #b69650;
-      --soft: #f5f0e7;
-      --glass: rgba(251, 251, 248, 0.72);
-      --glass-strong: rgba(255, 255, 255, 0.78);
-      --glass-line: rgba(230, 229, 223, 0.78);
+      --muted: #626b70;
+      --quiet: #919da3;
+      --line: #e1e9ed;
+      --accent: #58717c;
+      --accent-dark: #304852;
+      --gold: #8daab6;
+      --soft: #f1f6f8;
+      --glass: rgba(246, 251, 253, 0.74);
+      --glass-strong: rgba(252, 254, 255, 0.82);
+      --glass-line: rgba(218, 231, 237, 0.82);
       --measure: 72rem;
       --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
       --sans: Inter, "Segoe UI", Roboto, Arial, sans-serif;
@@ -73,7 +73,7 @@
       border-radius: 3px;
       background:
         linear-gradient(90deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08)),
-        rgba(236, 239, 237, 0.58);
+        rgba(235, 243, 247, 0.62);
       box-shadow: 0 16px 36px rgba(20, 28, 30, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.32);
       backdrop-filter: blur(18px) saturate(0.96);
       -webkit-backdrop-filter: blur(18px) saturate(0.96);
@@ -109,6 +109,12 @@
       font-size: 0.74rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+    }
+
+    .site-logo {
+      width: 168px;
+      height: 36px;
+      display: block;
     }
 
     .nav-links {
@@ -191,8 +197,8 @@
       align-items: flex-end;
       overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(31, 27, 21, 0.68) 0%, rgba(42, 37, 29, 0.34) 42%, rgba(91, 72, 47, 0.06) 76%),
-        linear-gradient(0deg, rgba(34, 29, 23, 0.66) 0%, rgba(103, 76, 43, 0.08) 62%, rgba(229, 190, 126, 0.08) 100%),
+        linear-gradient(90deg, rgba(18, 31, 38, 0.68) 0%, rgba(35, 53, 62, 0.32) 42%, rgba(104, 145, 162, 0.05) 76%),
+        linear-gradient(0deg, rgba(18, 31, 38, 0.64) 0%, rgba(93, 134, 151, 0.06) 62%, rgba(210, 234, 243, 0.08) 100%),
         url("assets/home-hero-institutional.png") center 48% / cover no-repeat;
     }
 
@@ -201,7 +207,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(87, 65, 39, 0.12), transparent 34%),
+        linear-gradient(180deg, rgba(70, 111, 129, 0.1), transparent 34%),
         linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 96px);
       opacity: 0.42;
       pointer-events: none;
@@ -997,20 +1003,10 @@
       gap: 18px;
     }
 
-    .footer-identity {
-      display: grid;
-      gap: 4px;
-      color: var(--ink);
-    }
-
-    .footer-identity strong {
-      font-size: 0.86rem;
-      font-weight: 500;
-    }
-
-    .footer-identity span {
-      color: var(--muted);
-      font-size: 0.72rem;
+    .footer-logo {
+      width: 168px;
+      height: 36px;
+      display: block;
     }
 
     @media (max-width: 900px) {
@@ -1248,12 +1244,9 @@
         gap: 4px;
       }
 
-      .footer-identity strong {
-        font-size: 0.62rem;
-      }
-
-      .footer-identity span {
-        font-size: 0.54rem;
+      .footer-logo {
+        width: 142px;
+        height: auto;
       }
 
       .button {
@@ -1287,8 +1280,7 @@
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Dmytro Yakubovskyy home">
-        <strong>Dmytro Yakubovskyy</strong>
-        <span>Interpreter & Translator</span>
+        <img class="site-logo" src="assets/logo.svg" alt="Dmytro Yakubovskyy, Interpreter and Translator">
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open navigation menu"></button>
       <div class="nav-links">
@@ -1668,10 +1660,7 @@
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-identity">
-        <strong>DY / Dmytro Yakubovskyy</strong>
-        <span>Ukrainian & Russian Conference Interpreter & Translator</span>
-      </div>
+      <img class="footer-logo" src="assets/logo.svg" alt="Dmytro Yakubovskyy, Interpreter and Translator">
     </div>
   </footer>
   <script>
