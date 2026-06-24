@@ -330,23 +330,17 @@
     .hero-meta .location-line {
       margin-top: 7px;
       color: var(--ink);
-      font-family: var(--serif);
-      font-size: 1.18rem;
-    }
-
-    .hero-meta .brussels {
-      position: relative;
-      color: #826c3c;
-    }
-
-    .hero-meta .brussels::after {
-      content: "EU";
-      margin-left: 6px;
-      color: var(--gold);
       font-family: var(--sans);
-      font-size: 0.56rem;
-      letter-spacing: 0.12em;
-      vertical-align: super;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+    }
+
+    .location-line .location-dark {
+      color: var(--ink);
+    }
+
+    .location-line .location-gold {
+      color: var(--gold);
     }
 
     .hero-facts {
@@ -1308,7 +1302,7 @@
         <div class="hero-meta">
           <span>MITI · MCIOL · ISO 17100</span>
           <span>Quality Assessor for the UK Ministry of Justice</span>
-          <span class="location-line">London · <span class="brussels">Brussels</span> · The Hague · and beyond</span>
+          <span class="location-line"><span class="location-dark">London</span> · <span class="location-gold">Brussels</span> · <span class="location-dark">The Hague</span> · <span class="location-gold">and beyond</span></span>
         </div>
         <p class="lead">With over 20 years of experience, I am trusted by European institutions and international organisations, law firms and legal-sector bodies, UK government departments and regulatory bodies, diplomatic representations, businesses, and private clients.</p>
         <div class="hero-quote">
@@ -1316,8 +1310,8 @@
           <cite>International Monetary Fund (2013-)</cite>
         </div>
         <div class="hero-actions">
-          <a class="button secondary" href="#">Download professional profile</a>
           <a class="button primary" href="contact.html">Contact</a>
+          <a class="button secondary" href="#">Download Profile</a>
           <a class="button secondary" href="#">LinkedIn</a>
         </div>
       </div>
