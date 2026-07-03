@@ -292,7 +292,7 @@ h3 {
 }
 
 .language-pairs {
-  margin-top: 38px;
+  margin-top: 42px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   border-top: 1px solid var(--line);
@@ -300,16 +300,34 @@ h3 {
 }
 
 .language-pair {
-  min-height: 98px;
-  display: flex;
+  min-height: 122px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr);
   align-items: center;
-  padding: 22px;
+  gap: 18px;
+  padding: 34px 30px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: var(--surface);
   color: var(--ink);
   font-family: var(--serif);
   font-size: 1.28rem;
+}
+
+.language-name:first-child {
+  justify-self: end;
+}
+
+.language-name:last-child {
+  justify-self: start;
+}
+
+.language-arrow {
+  width: 43px;
+  height: 8px;
+  justify-self: center;
+  background: url("assets/language-arrow.png") center / contain no-repeat;
+  opacity: 0.86;
 }
 
 .service-matrix {
@@ -734,6 +752,11 @@ footer {
 
   .language-pairs {
     grid-template-columns: 1fr;
+  }
+
+  .language-pair {
+    min-height: 108px;
+    padding: 28px 24px;
   }
 
   .service-matrix {
