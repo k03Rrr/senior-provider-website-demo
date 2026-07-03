@@ -184,6 +184,22 @@
       display: grid;
     }
 
+    .contact-image {
+      margin-bottom: 34px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .contact-image img {
+      width: 100%;
+      min-height: 260px;
+      display: block;
+      object-fit: cover;
+      object-position: 56% 50%;
+      filter: saturate(0.76) contrast(1.04) brightness(0.94);
+    }
+
     .panel-section {
       padding: 26px 0;
       border-bottom: 1px solid var(--line);
@@ -378,6 +394,14 @@
         font-size: 0.58rem;
       }
 
+      .contact-image {
+        margin-bottom: 22px;
+      }
+
+      .contact-image img {
+        min-height: 210px;
+      }
+
       .footer-inner {
         padding-top: 12px;
         gap: 4px;
@@ -423,6 +447,10 @@
       </section>
 
       <aside class="panel" aria-label="Contact details and enquiry guidance">
+        <div class="contact-image">
+          <img src="assets/home-hero-institutional.png" alt="Institutional architecture in London">
+        </div>
+
         <div class="panel-section">
           <p class="meta-label">Helpful to indicate</p>
           <ul class="enquiry-list">
