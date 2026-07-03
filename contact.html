@@ -135,7 +135,10 @@
     }
 
     .page-grid {
-      max-width: 900px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.48fr);
+      gap: 88px;
+      align-items: start;
     }
 
     .eyebrow,
@@ -176,17 +179,18 @@
       margin: 0;
     }
 
-    .contact-section {
-      max-width: 760px;
-      margin-top: 42px;
-      padding-top: 28px;
+    .panel {
       border-top: 1px solid var(--line);
       display: grid;
-      gap: 14px;
     }
 
-    .contact-section p {
-      margin: 0;
+    .panel-section {
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .panel-section p {
+      margin: 10px 0 0;
       color: var(--muted);
     }
 
@@ -416,7 +420,10 @@
           <p>As a consultant interpreter and translator, I am happy to advise on the most appropriate mode and delivery configuration where helpful. If circumstances are not straightforward, a brief exchange is often sufficient to clarify considerations and ensure that the chosen approach supports the objectives of the meeting or document.</p>
           <p>This information is not obligatory, but it helps ensure that practical arrangements can be addressed efficiently. Enquiries are handled promptly, subject to availability.</p>
         </div>
-        <div class="contact-section">
+      </section>
+
+      <aside class="panel" aria-label="Contact details and enquiry guidance">
+        <div class="panel-section">
           <p class="meta-label">Helpful to indicate</p>
           <ul class="enquiry-list">
             <li>The nature of the assignment: interpreting, translation, revision, or a combination.</li>
@@ -428,12 +435,12 @@
           </ul>
         </div>
 
-        <div class="contact-section">
+        <div class="panel-section">
           <p class="meta-label">Confidentiality</p>
           <p>All communications and materials are treated in strict confidence and with professional discretion.</p>
         </div>
 
-        <div class="contact-section contact-details">
+        <div class="panel-section contact-details">
           <p class="meta-label">Contact details</p>
           <p><strong>Dmytro Yakubovskyy</strong></p>
           <p><a href="mailto:dmytro@yakubovskyy.co.uk">dmytro@yakubovskyy.co.uk</a> · <a href="tel:+447410899058">+44 (0) 74 10 899 058</a></p>
@@ -444,7 +451,7 @@
           <p>Translation Quality Assessor for the UK Ministry of Justice</p>
           <p><a href="#">Download professional profile</a> · <a href="#">LinkedIn</a></p>
         </div>
-      </section>
+      </aside>
     </div>
   </main>
 

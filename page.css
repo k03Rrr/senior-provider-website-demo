@@ -325,8 +325,9 @@ h3 {
 .language-arrow {
   width: 43px;
   height: 8px;
+  display: block;
   justify-self: center;
-  background: url("assets/language-arrow.png") center / contain no-repeat;
+  object-fit: contain;
   opacity: 0.86;
 }
 
