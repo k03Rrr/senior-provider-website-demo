@@ -395,6 +395,8 @@ h3 {
 .remark {
   min-height: 260px;
   padding: 28px;
+  display: flex;
+  flex-direction: column;
   background: var(--surface);
 }
 
@@ -408,7 +410,8 @@ h3 {
 
 .remark cite {
   display: block;
-  margin-top: 22px;
+  margin-top: auto;
+  padding-top: 22px;
   color: var(--muted);
   font-size: 0.84rem;
   font-style: normal;
