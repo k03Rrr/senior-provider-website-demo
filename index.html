@@ -993,6 +993,7 @@
       padding-top: 30px;
       border-top: 1px solid rgba(22, 25, 23, 0.46);
       display: flex;
+      align-items: center;
       justify-content: space-between;
       gap: 18px;
     }
@@ -1001,6 +1002,13 @@
       width: 168px;
       height: 36px;
       display: block;
+    }
+
+    .footer-credit {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
     }
 
     @media (max-width: 900px) {
@@ -1655,6 +1663,7 @@
   <footer>
     <div class="footer-inner">
       <img class="footer-logo" src="assets/logo.svg" alt="Dmytro Yakubovskyy, Interpreter and Translator">
+      <p class="footer-credit">(C) All rights reserved</p>
     </div>
   </footer>
   <script>
