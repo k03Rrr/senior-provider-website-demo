@@ -186,6 +186,7 @@
 
     .contact-banner {
       margin-top: 48px;
+      aspect-ratio: 25 / 16;
       border: 1px solid var(--line);
       overflow: hidden;
       background: var(--surface);
@@ -193,10 +194,10 @@
 
     .contact-banner img {
       width: 100%;
-      height: 230px;
+      height: 100%;
       display: block;
       object-fit: cover;
-      object-position: 58% 50%;
+      object-position: center;
       filter: saturate(0.76) contrast(1.04) brightness(0.94);
     }
 
@@ -407,7 +408,7 @@
       }
 
       .contact-banner img {
-        height: 190px;
+        height: 100%;
       }
 
       .footer-inner {
