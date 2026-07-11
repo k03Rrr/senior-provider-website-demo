@@ -489,7 +489,6 @@ h3 {
 }
 
 .visual-stack {
-  margin-top: clamp(116px, 9vw, 142px);
   display: grid;
   gap: 28px;
 }
@@ -757,10 +756,6 @@ footer {
   .page-grid {
     grid-template-columns: 1fr;
     gap: 54px;
-  }
-
-  .visual-stack {
-    margin-top: 0;
   }
 
   .credentials-visual {
