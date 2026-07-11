@@ -496,8 +496,6 @@ h3 {
 .credentials-visual {
   align-self: stretch;
   padding: 12px 12px 12px;
-  display: flex;
-  flex-direction: column;
   border-left: 3px solid var(--gold);
   background: #f5f0e7;
 }
@@ -506,13 +504,14 @@ h3 {
   min-height: 0;
   width: 100%;
   height: 100%;
-  flex: 1;
   border: 0;
   object-fit: cover;
 }
 
 .credentials-visual .visual-frame {
-  flex: 1;
+  position: sticky;
+  top: 142px;
+  height: min(calc(100vh - 174px), 100%);
   border: 0;
 }
 
@@ -769,6 +768,11 @@ footer {
   .credentials-visual .visual {
     height: auto;
     aspect-ratio: 4 / 3;
+  }
+
+  .credentials-visual .visual-frame {
+    position: static;
+    height: auto;
   }
 
   .language-pairs {
