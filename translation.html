@@ -87,8 +87,17 @@
       </section>
 
       <aside class="visual-stack">
-        <div class="visual-frame visual-frame--original">
-          <img class="visual portrait" src="assets/translation-watercolor-tower.png" alt="Contemporary institutional architecture in watercolor style">
+        <div class="visual-frame visual-frame--original visual-carousel" data-carousel>
+          <div class="visual-carousel-track">
+            <img class="visual portrait visual-carousel-slide is-active" src="assets/translation-watercolor-tower.png" alt="Contemporary institutional architecture in watercolor style">
+            <img class="visual portrait visual-carousel-slide" src="assets/translation-modern.png" alt="Modern institutional building in restrained tones">
+            <img class="visual portrait visual-carousel-slide" src="assets/engagements-european-commission.png" alt="European institutional architecture in Brussels">
+          </div>
+          <div class="visual-carousel-pagination" aria-label="Image carousel pagination">
+            <button class="is-active" type="button" aria-label="Show image 1"></button>
+            <button type="button" aria-label="Show image 2"></button>
+            <button type="button" aria-label="Show image 3"></button>
+          </div>
         </div>
         <div class="evidence">
           <blockquote>“Mr Yakubovskyy is meticulous as regards the exact meanings and proper usage of technical and other terms in all the languages concerned.”</blockquote>
@@ -104,5 +113,40 @@
       <p class="footer-credit">© All rights reserved</p>
     </div>
   </footer>
+  <script>
+    (() => {
+      const carousel = document.querySelector("[data-carousel]");
+      if (!carousel) return;
+
+      const slides = Array.from(carousel.querySelectorAll(".visual-carousel-slide"));
+      const buttons = Array.from(carousel.querySelectorAll(".visual-carousel-pagination button"));
+      let activeIndex = 0;
+      let timerId;
+
+      const showSlide = (index) => {
+        activeIndex = (index + slides.length) % slides.length;
+        slides.forEach((slide, slideIndex) => {
+          slide.classList.toggle("is-active", slideIndex === activeIndex);
+        });
+        buttons.forEach((button, buttonIndex) => {
+          button.classList.toggle("is-active", buttonIndex === activeIndex);
+        });
+      };
+
+      const startCarousel = () => {
+        window.clearInterval(timerId);
+        timerId = window.setInterval(() => showSlide(activeIndex + 1), 3000);
+      };
+
+      buttons.forEach((button, index) => {
+        button.addEventListener("click", () => {
+          showSlide(index);
+          startCarousel();
+        });
+      });
+
+      startCarousel();
+    })();
+  </script>
 </body>
 </html>
