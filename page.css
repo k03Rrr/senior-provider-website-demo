@@ -513,26 +513,23 @@ h3 {
 }
 
 .visual-carousel-pagination {
-  position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 18px;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
 }
 
 .visual-carousel-pagination button {
-  height: 3px;
+  width: 14px;
+  height: 2px;
   padding: 0;
   border: 0;
-  background: rgba(255, 255, 255, 0.58);
+  background: rgba(145, 157, 163, 0.28);
   cursor: pointer;
 }
 
 .visual-carousel-pagination button.is-active {
-  background: var(--ink);
+  background: var(--gold);
 }
 
 .visual-stack {
