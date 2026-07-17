@@ -544,6 +544,12 @@ h3 {
   gap: 28px;
 }
 
+.visual-stack:not(.credentials-visual) {
+  position: sticky;
+  top: 142px;
+  align-self: start;
+}
+
 .credentials-visual {
   align-self: stretch;
 }
@@ -808,6 +814,10 @@ footer {
   .page-grid {
     grid-template-columns: 1fr;
     gap: 54px;
+  }
+
+  .visual-stack:not(.credentials-visual) {
+    position: static;
   }
 
   .credentials-visual {
