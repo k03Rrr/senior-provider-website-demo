@@ -544,7 +544,7 @@ h3 {
   gap: 28px;
 }
 
-.visual-stack:not(.credentials-visual) {
+.visual-stack:not(.credentials-visual):not(:has(.evidence)) {
   position: sticky;
   top: 142px;
   align-self: start;
@@ -816,7 +816,7 @@ footer {
     gap: 54px;
   }
 
-  .visual-stack:not(.credentials-visual) {
+  .visual-stack:not(.credentials-visual):not(:has(.evidence)) {
     position: static;
   }
 
