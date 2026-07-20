@@ -17,7 +17,7 @@
         <a href="how-i-work.html">How I Work</a>
         <a href="interpreting.html">Interpreting</a>
         <a href="translation.html">Translation & Revision</a>
-        <a href="engagements.html">Credentials</a>
+        <a href="engagements.html">References</a>
         <a href="contact.html">Contact</a>
       </div>
     </nav>
@@ -94,12 +94,6 @@
             <img class="visual portrait visual-carousel-slide" src="assets/translation-document-3.png" alt="Official loan agreement title page">
             <img class="visual portrait visual-carousel-slide" src="assets/translation-document-4.png" alt="Ukrainian financial agreement title page">
           </div>
-          <div class="visual-carousel-pagination" aria-label="Image carousel pagination">
-            <button class="is-active" type="button" aria-label="Show image 1"></button>
-            <button type="button" aria-label="Show image 2"></button>
-            <button type="button" aria-label="Show image 3"></button>
-            <button type="button" aria-label="Show image 4"></button>
-          </div>
         </div>
         <div class="evidence">
           <blockquote>“Mr Yakubovskyy is meticulous as regards the exact meanings and proper usage of technical and other terms in all the languages concerned.”</blockquote>
@@ -121,7 +115,6 @@
       if (!carousel) return;
 
       const slides = Array.from(carousel.querySelectorAll(".visual-carousel-slide"));
-      const buttons = Array.from(carousel.querySelectorAll(".visual-carousel-pagination button"));
       let activeIndex = 0;
       let timerId;
 
@@ -130,22 +123,12 @@
         slides.forEach((slide, slideIndex) => {
           slide.classList.toggle("is-active", slideIndex === activeIndex);
         });
-        buttons.forEach((button, buttonIndex) => {
-          button.classList.toggle("is-active", buttonIndex === activeIndex);
-        });
       };
 
       const startCarousel = () => {
         window.clearInterval(timerId);
         timerId = window.setInterval(() => showSlide(activeIndex + 1), 3000);
       };
-
-      buttons.forEach((button, index) => {
-        button.addEventListener("click", () => {
-          showSlide(index);
-          startCarousel();
-        });
-      });
 
       startCarousel();
     })();
