@@ -357,9 +357,9 @@ h3 {
 
 .certified-service {
   margin-top: 28px;
-  width: calc((100% - 28px) / 3);
-  aspect-ratio: 1;
-  padding: 26px;
+  width: calc((100% - 14px) / 1.5);
+  min-height: 260px;
+  padding: 30px 32px 34px;
   border: 1px solid var(--line);
   background: var(--surface);
 }
@@ -372,6 +372,10 @@ h3 {
 .certified-service-copy p {
   margin: 16px 0 0;
   color: var(--muted);
+}
+
+.certified-service-copy p + p {
+  margin-top: 18px;
 }
 
 .remarks {
@@ -874,7 +878,6 @@ footer {
 
   .certified-service {
     width: 100%;
-    aspect-ratio: auto;
     min-height: 188px;
     padding: 28px 26px 32px;
   }
