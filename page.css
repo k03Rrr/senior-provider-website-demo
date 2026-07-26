@@ -334,16 +334,14 @@ h3 {
 .service-matrix {
   margin-top: 54px;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .service-matrix-item {
-  min-height: 188px;
+  aspect-ratio: 1;
   padding: 26px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border: 1px solid var(--line);
   background: var(--surface);
 }
 
@@ -354,6 +352,27 @@ h3 {
 
 .service-matrix-item p {
   margin: 16px 0 0;
+  color: var(--muted);
+}
+
+.certified-service {
+  margin-top: 28px;
+  padding: 34px 36px 38px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.certified-service h2 {
+  margin: 0;
+  font-size: 1.9rem;
+}
+
+.certified-service-copy {
+  max-width: 720px;
+}
+
+.certified-service-copy p {
+  margin: 18px 0 0;
   color: var(--muted);
 }
 
@@ -848,6 +867,15 @@ footer {
 
   .service-matrix {
     grid-template-columns: 1fr;
+  }
+
+  .service-matrix-item {
+    aspect-ratio: auto;
+    min-height: 188px;
+  }
+
+  .certified-service {
+    padding: 28px 26px 32px;
   }
 
   .remark-grid {
