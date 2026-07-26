@@ -357,7 +357,7 @@ h3 {
 
 .certified-service {
   margin-top: 28px;
-  width: calc((100% - 14px) / 1.5);
+  width: 100%;
   min-height: 260px;
   padding: 30px 32px 34px;
   border: 1px solid var(--line);
