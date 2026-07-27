@@ -368,16 +368,6 @@ h3 {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(248, 244, 236, 0.72));
 }
 
-.certified-service::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 40px;
-  width: 72px;
-  height: 2px;
-  background: var(--gold);
-}
-
 .certified-service-heading {
   align-self: start;
   display: grid;
@@ -911,10 +901,6 @@ footer {
     grid-template-columns: 1fr;
     gap: 24px;
     padding: 28px 26px 32px;
-  }
-
-  .certified-service::before {
-    left: 26px;
   }
 
   .remark-grid {
