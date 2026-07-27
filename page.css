@@ -356,21 +356,51 @@ h3 {
 }
 
 .certified-service {
-  margin-top: 28px;
+  position: relative;
+  margin-top: 34px;
   width: 100%;
-  min-height: 260px;
-  padding: 30px 32px 34px;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+  gap: 42px;
+  padding: 36px 40px 40px;
   border: 1px solid var(--line);
-  background: var(--surface);
+  border-left: 3px solid var(--gold);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(248, 244, 236, 0.72));
+}
+
+.certified-service::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 40px;
+  width: 72px;
+  height: 2px;
+  background: var(--gold);
+}
+
+.certified-service-heading {
+  align-self: start;
+  display: grid;
+  gap: 18px;
+}
+
+.certified-service-kicker {
+  color: var(--quiet);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .certified-service h2 {
   margin: 0;
-  font-size: 1.65rem;
+  max-width: 320px;
+  font-size: clamp(1.8rem, 3vw, 2.45rem);
+  line-height: 1.02;
 }
 
 .certified-service-copy p {
-  margin: 16px 0 0;
+  margin: 0;
   color: var(--muted);
 }
 
@@ -878,8 +908,13 @@ footer {
 
   .certified-service {
     width: 100%;
-    min-height: 188px;
+    grid-template-columns: 1fr;
+    gap: 24px;
     padding: 28px 26px 32px;
+  }
+
+  .certified-service::before {
+    left: 26px;
   }
 
   .remark-grid {
