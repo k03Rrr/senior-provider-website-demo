@@ -651,7 +651,7 @@ h3 {
   gap: 28px;
 }
 
-.visual-stack:not(.credentials-visual):not(:has(.evidence)) {
+.visual-stack:not(.credentials-visual):not(.insights-visual):not(:has(.evidence)) {
   position: sticky;
   top: 142px;
   align-self: start;
