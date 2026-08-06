@@ -325,7 +325,8 @@ h3 {
   line-height: 1.28;
 }
 
-.insight-meta {
+.insight-meta,
+.insight-body p.insight-meta {
   margin-top: 32px !important;
   color: #000 !important;
   font-size: 1.02rem !important;
